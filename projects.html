@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Samuel E. R. Thompson</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="hero-gradient">
+
+    <div id="navbar-container"></div>
+
+    <main class="max-w-6xl mx-auto px-6 py-16 relative pt-24">
+        <div class="text-center mb-16 fade-in-up">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4">
+                Engineering <span class="accent-text">Projects</span>
+            </h1>
+            <div class="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded mx-auto mb-6"></div>
+            <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+                From commercial game releases to cutting-edge VR research implementations
+            </p>
+        </div>
+
+        <div class="grid gap-20">
+            
+            <section class="grid md:grid-cols-2 gap-12 items-center glass p-8 rounded-3xl hover:border-blue-500/50 transition-all">
+                <div class="relative group">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop&q=80" 
+                         class="rounded-3xl shadow-2xl border border-white/10 w-full transition-transform group-hover:scale-105" 
+                         alt="YEET Gameplay">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fab fa-steam text-4xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Steamworks</span>
+                        <span class="tech-tag">Game Design</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 italic accent-text">YEET</h2>
+                    <p class="text-slate-400 mb-6 leading-relaxed text-lg">
+                        A commercial release on Steam, YEET focuses on high-precision physics interactions. I handled the end-to-end development cycle: from core engine architecture to Steam integration and community management.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-check-circle text-blue-400"></i>
+                            <span>Published on Steam</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-check-circle text-blue-400"></i>
+                            <span>Full-stack development</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-check-circle text-blue-400"></i>
+                            <span>Community management</span>
+                        </div>
+                    </div>
+                    <a href="https://store.steampowered.com/app/2307030/YEET/" target="_blank" class="btn-primary mt-6 inline-block">
+                        <i class="fab fa-steam mr-2"></i>Explore on Steam
+                    </a>
+                </div>
+            </section>
+
+            <section class="grid md:grid-cols-2 gap-12 items-center glass p-8 rounded-3xl hover:border-blue-500/50 transition-all">
+                <div class="order-2 md:order-1">
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Shaders</span>
+                        <span class="tech-tag">Oculus SDK</span>
+                        <span class="tech-tag">Research</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 italic accent-text">Impossible Spaces</h2>
+                    <p class="text-slate-400 mb-6 leading-relaxed text-lg">
+                        The technical engine behind my 2025 research. This project solves the "small-room" VR problem by algorithmically curving the user's path without their knowledge, enabling infinite walking in finite spaces.
+                    </p>
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-check-circle text-blue-400"></i>
+                            <span>Redirected walking algorithm</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-check-circle text-blue-400"></i>
+                            <span>Non-Euclidean geometry</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-check-circle text-blue-400"></i>
+                            <span>Published research paper</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/Flame1190/CompSci-715-Unity" target="_blank" class="btn-secondary inline-block">
+                        <i class="fab fa-github mr-2"></i>View Technical Repository
+                    </a>
+                </div>
+                <div class="relative group order-1 md:order-2">
+                    <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=800&h=600&fit=crop&q=80" 
+                         class="rounded-3xl shadow-2xl border border-white/10 w-full transition-transform group-hover:scale-105" 
+                         alt="Impossible Spaces Mechanics">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fas fa-vr-cardboard text-4xl"></i>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid md:grid-cols-2 gap-12 items-center glass p-8 rounded-3xl hover:border-blue-500/50 transition-all">
+                <div class="relative group">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=600&fit=crop&q=80" 
+                         class="rounded-3xl shadow-2xl border border-white/10 w-full transition-transform group-hover:scale-105" 
+                         alt="Chroma Chameleon">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fas fa-gamepad text-4xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">Game Design</span>
+                        <span class="tech-tag">Platformer</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 italic accent-text">Chroma Chameleon</h2>
+                    <p class="text-slate-400 mb-6 leading-relaxed text-lg">
+                        A color-switching platformer designed for precision. Explore a variety of mechanics developed during independent game jams, featuring tight controls and innovative color-based gameplay.
+                    </p>
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-check-circle text-blue-400"></i>
+                            <span>Game jam project</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-check-circle text-blue-400"></i>
+                            <span>Precision platforming</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-check-circle text-blue-400"></i>
+                            <span>Available on Itch.io</span>
+                        </div>
+                    </div>
+                    <a href="https://taintedflamegames.itch.io/chroma-chameleon" target="_blank" class="btn-primary inline-block">
+                        <i class="fas fa-play mr-2"></i>Play on Itch.io
+                    </a>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="text-center mt-16">
+            <a href="index.html" class="btn-secondary">
+                <i class="fas fa-arrow-left mr-2"></i>Back to Home
+            </a>
+        </div>
+    </main>
+
+    <script src="navbar.js"></script>
+    <script>
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
