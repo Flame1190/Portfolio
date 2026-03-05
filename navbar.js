@@ -7,6 +7,7 @@
   const file = path.split('/').pop() || 'index.html';
   const isIndex = file === 'index.html' || file === '';
   const isProjects = file === 'projects.html';
+  const isGitHubProjects = file === 'github-projects.html';
   const isResearch = file === 'research.html';
 
   const logoHref = isIndex ? '#about' : 'index.html';
@@ -28,9 +29,28 @@
 <nav id="navbar" class="fixed w-full z-50 py-6 glass border-b border-white/5">
   <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
     <a href="${logoHref}" class="text-xl font-extrabold tracking-tighter hover:scale-105 transition-transform"><span class="accent-text">Sam</span> Thompson</a>
-    <div class="hidden md:flex space-x-10 text-xs font-medium tracking-widest uppercase">
+    <div class="hidden md:flex space-x-10 text-xs font-medium tracking-widest uppercase items-center">
       ${link(aboutHref, 'About', isIndex)}
-      ${link('projects.html', 'Development', isProjects)}
+
+      <div class="relative nav-group">
+        <a href="projects.html" class="transition flex items-center gap-2${isProjects || isGitHubProjects ? ' text-blue-400' : ' hover:text-blue-400'}">
+          <span>Engineering</span>
+          <i class="fas fa-chevron-down text-[10px] mt-[1px]"></i>
+        </a>
+        <div class="absolute left-1/2 -translate-x-1/2 top-full hidden z-40 nav-dropdown">
+          <div class="mt-2 w-60 rounded-2xl glass border border-white/10 shadow-xl">
+            <div class="py-2">
+              <a href="projects.html" class="block px-4 py-2 text-[11px] text-slate-300 hover:text-white hover:bg-white/5">
+                Showcase projects
+              </a>
+              <a href="github-projects.html" class="block px-4 py-2 text-[11px] text-slate-300 hover:text-white hover:bg-white/5">
+                GitHub repositories
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       ${link('research.html', 'Research', isResearch)}
       ${link(contactHref, 'Contact', false)}
     </div>
@@ -41,7 +61,9 @@
   <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 pt-2 border-t border-white/5">
     <div class="flex flex-col gap-4 text-sm font-medium tracking-widest uppercase">
       <a href="${aboutHref}" class="mobile-nav-link hover:text-blue-400 transition py-2">About</a>
-      <a href="projects.html" class="mobile-nav-link hover:text-blue-400 transition py-2">Development</a>
+      <span class="text-[11px] text-slate-500 pt-2">Engineering</span>
+      <a href="projects.html" class="mobile-nav-link hover:text-blue-400 transition py-1 pl-3 text-[11px]">Showcase projects</a>
+      <a href="github-projects.html" class="mobile-nav-link hover:text-blue-400 transition py-1 pl-3 text-[11px]">GitHub repositories</a>
       <a href="research.html" class="mobile-nav-link hover:text-blue-400 transition py-2">Research</a>
       <a href="${contactHref}" class="mobile-nav-link hover:text-blue-400 transition py-2">Contact</a>
     </div>

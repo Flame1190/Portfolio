@@ -338,3 +338,8 @@ a:not([class*="btn"]) i {
 .glow-purple {
     box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
 }
+
+/* Navbar dropdown helper */
+.nav-group:hover .nav-dropdown {
+    display: block;
+}
