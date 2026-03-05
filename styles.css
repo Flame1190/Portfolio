@@ -343,3 +343,22 @@ a:not([class*="btn"]) i {
 .nav-group:hover .nav-dropdown {
     display: block;
 }
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .accent-text {
+        animation: none;
+    }
+    .fade-in-up,
+    .project-card,
+    .publication-card {
+        animation: none;
+        transition: none;
+    }
+    .animate-bounce {
+        animation: none;
+    }
+}

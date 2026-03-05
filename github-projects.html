@@ -14,15 +14,15 @@
 
     <main class="max-w-6xl mx-auto px-6 mt-12 relative pt-24">
         <div class="text-center mb-16 fade-in-up">
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-4">
-                GitHub <span class="accent-text">Projects</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+                GitHub <span class="accent-text">Repository Archive</span>
             </h1>
             <div class="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded mx-auto mb-6"></div>
             <p class="text-slate-400 max-w-2xl mx-auto text-lg">
-                Live view of repositories from my GitHub account.
+                A live view of non-archived repositories from my GitHub account&mdash;including prototypes, tools, and work-in-progress ideas.
             </p>
             <p class="text-slate-500 max-w-2xl mx-auto text-sm mt-3">
-                Data is fetched directly from GitHub, ordered by recent activity.
+                For hand-picked case studies and production work, see the <a href="projects.html" class="text-blue-400 hover:text-blue-300 font-semibold">curated projects</a> page.
             </p>
         </div>
 
@@ -33,9 +33,22 @@
                     <i class="fab fa-github"></i> github.com/Flame1190
                 </a>
             </div>
-            <div class="flex flex-wrap gap-3 text-xs">
+            <div class="flex flex-wrap gap-3 text-xs items-center">
                 <span id="repo-count" class="tech-tag">Loading...</span>
                 <span id="language-summary" class="tech-tag hidden"></span>
+                <span id="last-updated" class="text-slate-500 text-[11px]"></span>
+            </div>
+        </section>
+
+        <section class="mb-6 flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div class="text-xs text-slate-500 uppercase tracking-widest">
+                Filter repositories
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                <input id="repo-search" type="text" placeholder="Search by name or description" class="w-full sm:w-64 px-3 py-2 rounded-xl bg-black/30 border border-white/10 text-xs text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-blue-400" />
+                <select id="language-filter" class="w-full sm:w-40 px-3 py-2 rounded-xl bg-black/30 border border-white/10 text-xs text-slate-200 focus:outline-none focus:border-blue-400">
+                    <option value="">All languages</option>
+                </select>
             </div>
         </section>
 
@@ -76,6 +89,11 @@
             const errorMessage = document.getElementById('projects-error-message');
             const repoCount = document.getElementById('repo-count');
             const languageSummary = document.getElementById('language-summary');
+            const lastUpdated = document.getElementById('last-updated');
+            const searchInput = document.getElementById('repo-search');
+            const languageFilter = document.getElementById('language-filter');
+
+            var allRepos = [];
 
             function createCard(repo) {
                 const topics = Array.isArray(repo.topics) ? repo.topics : [];
@@ -185,6 +203,43 @@
                 }
             }
 
+            function updateLanguageFilterOptions(repos) {
+                var counts = {};
+                repos.forEach(function (r) {
+                    if (r.language) {
+                        counts[r.language] = (counts[r.language] || 0) + 1;
+                    }
+                });
+
+                // Reset options (keep "All languages")
+                languageFilter.innerHTML = '<option value="">All languages</option>';
+                Object.keys(counts)
+                    .sort()
+                    .forEach(function (lang) {
+                        var opt = document.createElement('option');
+                        opt.value = lang;
+                        opt.textContent = lang + ' (' + counts[lang] + ')';
+                        languageFilter.appendChild(opt);
+                    });
+            }
+
+            function applyFilters() {
+                var term = (searchInput.value || '').toLowerCase();
+                var lang = languageFilter.value;
+
+                var filtered = allRepos.filter(function (repo) {
+                    if (lang && repo.language !== lang) return false;
+
+                    if (!term) return true;
+                    var name = (repo.name || '').toLowerCase();
+                    var desc = (repo.description || '').toLowerCase();
+                    return name.indexOf(term) !== -1 || desc.indexOf(term) !== -1;
+                });
+
+                render(filtered);
+                updateSummary(filtered);
+            }
+
             function render(repos) {
                 grid.innerHTML = '';
 
@@ -196,6 +251,44 @@
                 repos.forEach(function (repo) {
                     grid.appendChild(createCard(repo));
                 });
+            }
+
+            function setLastUpdated(ts) {
+                if (!lastUpdated) return;
+                try {
+                    var d = new Date(ts);
+                    if (!isNaN(d.getTime())) {
+                        lastUpdated.textContent = 'Last updated ' + d.toLocaleString();
+                    }
+                } catch (e) {
+                    // ignore
+                }
+            }
+
+            function loadFromData(data, timestamp) {
+                // Only count and display non-archived, non-fork repositories
+                allRepos = data.filter(function (repo) {
+                    return !repo.archived && !repo.fork;
+                });
+
+                updateLanguageFilterOptions(allRepos);
+                applyFilters();
+                setLastUpdated(timestamp || Date.now());
+            }
+
+            var CACHE_KEY = 'gh_repos_Flame1190_v1';
+            var CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
+
+            try {
+                var cachedRaw = localStorage.getItem(CACHE_KEY);
+                if (cachedRaw) {
+                    var cached = JSON.parse(cachedRaw);
+                    if (cached && Array.isArray(cached.data) && cached.timestamp && (Date.now() - cached.timestamp < CACHE_TTL_MS)) {
+                        loadFromData(cached.data, cached.timestamp);
+                    }
+                }
+            } catch (e) {
+                // ignore cache errors
             }
 
             fetch(apiUrl)
@@ -210,21 +303,34 @@
                         throw new Error('Unexpected GitHub response.');
                     }
 
-                    // Only count and display non-archived, non-fork repositories
-                    const visibleRepos = data.filter(function (repo) {
-                        return !repo.archived && !repo.fork;
-                    });
+                    loadFromData(data, Date.now());
 
-                    updateSummary(visibleRepos);
-                    render(visibleRepos);
+                    try {
+                        localStorage.setItem(CACHE_KEY, JSON.stringify({ data: data, timestamp: Date.now() }));
+                    } catch (e) {
+                        // ignore storage errors
+                    }
                 })
                 .catch(function (err) {
-                    errorState.classList.remove('hidden');
-                    if (errorMessage) {
-                        errorMessage.textContent = err.message || String(err);
+                    if (!allRepos.length) {
+                        errorState.classList.remove('hidden');
+                        if (errorMessage) {
+                            errorMessage.textContent = err.message || String(err);
+                        }
+                        repoCount.textContent = 'Error';
                     }
-                    repoCount.textContent = 'Error';
                 });
+
+            if (searchInput) {
+                searchInput.addEventListener('input', function () {
+                    applyFilters();
+                });
+            }
+            if (languageFilter) {
+                languageFilter.addEventListener('change', function () {
+                    applyFilters();
+                });
+            }
         })();
     </script>
 </body>

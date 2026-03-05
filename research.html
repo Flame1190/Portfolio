@@ -201,23 +201,223 @@
 
     <script src="navbar.js"></script>
     <script>
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Fade-in on scroll (shared behavior)
+        (function () {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
-                }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
             });
-        }, observerOptions);
+        })();
 
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+        // Dynamic publications from Google Scholar (with caching & graceful fallback)
+        (function () {
+            const SCHOLAR_URL = 'https://scholar.google.com/citations?user=I4Zl2NIAAAAJ&view_op=list_works&sortby=pubdate';
+            const CACHE_KEY = 'scholar_works_I4Zl2NIAAAAJ_v1';
+            const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+
+            const container2025 = document.querySelector('section:nth-of-type(1) .space-y-6');
+            const container2024 = document.querySelector('section:nth-of-type(2) .space-y-6');
+            const container2023 = document.querySelector('section:nth-of-type(3) .space-y-6');
+
+            function groupByYear(publications) {
+                const groups = {};
+                publications.forEach(function (pub) {
+                    const y = pub.year || 'Other';
+                    if (!groups[y]) groups[y] = [];
+                    groups[y].push(pub);
+                });
+                return groups;
+            }
+
+            function createCard(pub) {
+                const card = document.createElement('article');
+                card.className = 'glass publication-card p-8 rounded-2xl border-l-4 border-slate-700 hover:border-blue-500/50 transition-all';
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'flex flex-col md:flex-row gap-6';
+
+                const imgCol = document.createElement('div');
+                imgCol.className = 'md:w-32 flex-shrink-0';
+                const img = document.createElement('div');
+                img.className = 'w-full rounded-xl shadow-lg border border-white/10 bg-gradient-to-br from-blue-500/20 to-purple-500/10 flex items-center justify-center text-slate-300 text-xs text-center px-3 py-6';
+                img.textContent = pub.venue || 'Publication';
+                imgCol.appendChild(img);
+
+                const body = document.createElement('div');
+                body.className = 'flex-1';
+
+                const metaRow = document.createElement('div');
+                metaRow.className = 'flex items-center gap-2 mb-3';
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-file-alt text-slate-500';
+                const status = document.createElement('span');
+                status.className = 'text-xs text-slate-500 uppercase tracking-widest font-bold';
+                status.textContent = pub.citedBy ? 'Published' : 'Preprint / Working';
+                metaRow.appendChild(icon);
+                metaRow.appendChild(status);
+
+                const title = document.createElement('h3');
+                title.className = 'text-xl md:text-2xl font-bold mb-3 leading-tight';
+                title.textContent = pub.title;
+
+                const authors = document.createElement('p');
+                authors.className = 'text-slate-400 text-sm mb-2';
+                if (pub.authors) {
+                    authors.textContent = pub.authors;
+                }
+
+                const venueLine = document.createElement('p');
+                venueLine.className = 'text-slate-500 text-sm mb-3';
+                var venueParts = [];
+                if (pub.venue) venueParts.push(pub.venue);
+                if (pub.year) venueParts.push(pub.year);
+                venueLine.textContent = venueParts.join(' · ');
+
+                const linkRow = document.createElement('div');
+                if (pub.link) {
+                    const link = document.createElement('a');
+                    link.href = pub.link;
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    link.className = 'btn-secondary inline-block';
+                    link.innerHTML = '<i class="fas fa-external-link-alt mr-2"></i>View on Google Scholar';
+                    linkRow.appendChild(link);
+                }
+
+                body.appendChild(metaRow);
+                body.appendChild(title);
+                if (pub.authors) body.appendChild(authors);
+                body.appendChild(venueLine);
+                body.appendChild(linkRow);
+
+                wrapper.appendChild(imgCol);
+                wrapper.appendChild(body);
+                card.appendChild(wrapper);
+                return card;
+            }
+
+            function renderPublications(publications) {
+                if (!publications || !publications.length) return;
+
+                const groups = groupByYear(publications);
+
+                function fillContainer(container, year) {
+                    if (!container || !groups[year]) return;
+                    container.innerHTML = '';
+                    groups[year].forEach(function (pub) {
+                        container.appendChild(createCard(pub));
+                    });
+                }
+
+                fillContainer(container2025, '2025');
+                fillContainer(container2024, '2024');
+                fillContainer(container2023, '2023');
+            }
+
+            function parseScholarHtml(html) {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const rows = doc.querySelectorAll('.gsc_a_tr');
+                const pubs = [];
+
+                rows.forEach(function (row) {
+                    const titleEl = row.querySelector('.gsc_a_at');
+                    if (!titleEl) return;
+
+                    const title = titleEl.textContent.trim();
+                    const link = titleEl.href;
+
+                    const authorEl = row.querySelector('.gsc_a_at').parentElement.nextElementSibling;
+                    const authors = authorEl ? authorEl.textContent.trim() : '';
+
+                    const venueYearEl = authorEl ? authorEl.nextElementSibling : null;
+                    const venueYear = venueYearEl ? venueYearEl.textContent.trim() : '';
+
+                    let year = '';
+                    const yearEl = row.querySelector('.gsc_a_y span');
+                    if (yearEl) {
+                        year = yearEl.textContent.trim();
+                    }
+
+                    let citedBy = 0;
+                    const citedEl = row.querySelector('.gsc_a_c a');
+                    if (citedEl) {
+                        const n = parseInt(citedEl.textContent.trim(), 10);
+                        if (!isNaN(n)) citedBy = n;
+                    }
+
+                    pubs.push({
+                        title: title,
+                        authors: authors,
+                        venue: venueYear,
+                        year: year,
+                        link: link,
+                        citedBy: citedBy
+                    });
+                });
+
+                return pubs;
+            }
+
+            function tryLoadFromCache() {
+                try {
+                    const raw = localStorage.getItem(CACHE_KEY);
+                    if (!raw) return null;
+                    const cached = JSON.parse(raw);
+                    if (!cached || !Array.isArray(cached.data) || !cached.timestamp) return null;
+                    if (Date.now() - cached.timestamp > CACHE_TTL_MS) return null;
+                    return cached.data;
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function saveToCache(data) {
+                try {
+                    localStorage.setItem(CACHE_KEY, JSON.stringify({
+                        data: data,
+                        timestamp: Date.now()
+                    }));
+                } catch (e) {
+                    // ignore
+                }
+            }
+
+            const cached = tryLoadFromCache();
+            if (cached && cached.length) {
+                renderPublications(cached);
+            }
+
+            // Attempt live fetch from Google Scholar; may be blocked by CORS in some environments.
+            fetch(SCHOLAR_URL, { credentials: 'omit' })
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error('Scholar responded with ' + response.status);
+                    }
+                    return response.text();
+                })
+                .then(function (html) {
+                    const pubs = parseScholarHtml(html);
+                    if (!pubs || !pubs.length) return;
+                    renderPublications(pubs);
+                    saveToCache(pubs);
+                })
+                .catch(function () {
+                    // Graceful fallback: keep existing static content
+                });
+        })();
     </script>
 </body>
 </html>
