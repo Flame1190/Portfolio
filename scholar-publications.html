@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Scholar Feed | Samuel E. R. Thompson</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="hero-gradient min-h-screen pb-20">
+
+    <div id="navbar-container"></div>
+
+    <main class="max-w-5xl mx-auto px-6 mt-12 relative pt-24">
+        <div class="text-center mb-16 fade-in-up">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+                All Publications <span class="accent-text">(Google Scholar)</span>
+            </h1>
+            <div class="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded mx-auto mb-6"></div>
+            <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+                Automatically synced list of all publications from my Google Scholar profile, with search, year filters, and citation counts.
+            </p>
+            <p class="text-slate-500 max-w-2xl mx-auto text-xs mt-3">
+                For narrative context and a smaller, hand‑picked set of projects, see the <a href="research.html" class="text-blue-400 hover:text-blue-300 font-semibold">Selected Publications</a> page.
+            </p>
+        </div>
+
+        <section class="glass rounded-3xl p-4 mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div class="text-slate-400 text-sm flex items-center gap-3">
+                <i class="ai ai-google-scholar text-2xl text-blue-400"></i>
+                <div>
+                    <span class="font-semibold text-slate-200 block">Source: Google Scholar</span>
+                    <a href="https://scholar.google.com/citations?user=I4Zl2NIAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold text-xs inline-flex items-center gap-2">
+                        View profile <i class="fas fa-external-link-alt text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-3 text-xs items-center">
+                <span id="pub-count" class="tech-tag">Loading...</span>
+                <span id="year-summary" class="tech-tag hidden"></span>
+                <span id="pub-last-updated" class="text-slate-500 text-[11px]"></span>
+            </div>
+        </section>
+
+        <section class="mb-6 flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div class="text-xs text-slate-500 uppercase tracking-widest">
+                Filter publications
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                <input id="pub-search" type="text" placeholder="Search by title, venue, or author" class="w-full sm:w-72 px-3 py-2 rounded-xl bg-black/30 border border-white/10 text-xs text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-blue-400" />
+                <select id="year-filter" class="w-full sm:w-40 px-3 py-2 rounded-xl bg-black/30 border border-white/10 text-xs text-slate-200 focus:outline-none focus:border-blue-400">
+                    <option value="">All years</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="pub-list" class="space-y-3">
+            <!-- Publication cards injected here -->
+        </section>
+
+        <div id="pub-empty" class="hidden text-center text-slate-500 mt-16">
+            <p class="mb-2">No publications match the current filters.</p>
+            <p class="text-xs text-slate-600">Try clearing the search or selecting a different year.</p>
+        </div>
+
+        <div id="pub-error" class="hidden text-center text-red-400 mt-16">
+            <p class="mb-2">Unable to load publications feed.</p>
+            <p class="text-xs text-slate-500" id="pub-error-message"></p>
+        </div>
+
+        <div class="text-center mt-16">
+            <a href="research.html" class="btn-secondary mb-4">
+                <i class="fas fa-book mr-2"></i>Research Archive
+            </a>
+            <div class="block"></div>
+            <a href="index.html" class="btn-secondary">
+                <i class="fas fa-arrow-left mr-2"></i>Back to Home
+            </a>
+        </div>
+    </main>
+
+    <script src="navbar.js"></script>
+    <script>
+        (function () {
+            // Basic fade-in behavior for this page
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('section').forEach(section => observer.observe(section));
+        })();
+
+        (function () {
+            const JSON_URL = 'publications.json';
+            const CACHE_KEY = 'publications_cache_v1';
+            const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+
+            // Inline fallback data so page works even when opened via file://
+            const INLINE_PUBLICATIONS = [
+                {
+                    title: "Now You're Thinking with Portals: Investigating Episodic Memory and Locomotion with Redirected Walking in Impossible Spaces",
+                    authors: "Thompson, S. E. R., Lange-Nawka, D., Habedank, A., et al.",
+                    venue: "Virtual Worlds 4 (3), 39",
+                    year: "2025",
+                    link: "https://www.mdpi.com/2813-2084/4/3/39",
+                    citedBy: 0
+                },
+                {
+                    title: "That's the way I (dis-) like it! - Effect of Gamer Types and Competitiveness in VR Exergaming",
+                    authors: "Lange-Nawka, D., Wünsche, B., Thompson, S. E. R.",
+                    venue: "ACM CHI PLAY",
+                    year: "2024",
+                    link: "https://scholar.google.com/citations?user=I4Zl2NIAAAAJ&view_op=list_works&sortby=pubdate",
+                    citedBy: 0
+                },
+                {
+                    title: "Embodied Identities: Investigating Personalised Avatars",
+                    authors: "Thompson, S. E. R.",
+                    venue: "Under review",
+                    year: "2024",
+                    link: "https://scholar.google.com/citations?user=I4Zl2NIAAAAJ&view_op=list_works&sortby=pubdate",
+                    citedBy: 0
+                },
+                {
+                    title: "Hands-on DNA: Exploring the Impact of Virtual Reality on Teaching DNA Structure",
+                    authors: "Thompson, S. E. R., et al.",
+                    venue: "ACM VRST",
+                    year: "2023",
+                    link: "https://scholar.google.com/citations?user=I4Zl2NIAAAAJ&view_op=list_works&sortby=pubdate",
+                    citedBy: 0
+                },
+                {
+                    title: "Auditory temporal hints in AR piano tutoring",
+                    authors: "Thompson, S. E. R., et al.",
+                    venue: "IVCNZ",
+                    year: "2023",
+                    link: "https://scholar.google.com/citations?user=I4Zl2NIAAAAJ&view_op=list_works&sortby=pubdate",
+                    citedBy: 0
+                }
+            ];
+
+            const listEl = document.getElementById('pub-list');
+            const emptyEl = document.getElementById('pub-empty');
+            const errorEl = document.getElementById('pub-error');
+            const errorMsgEl = document.getElementById('pub-error-message');
+            const countEl = document.getElementById('pub-count');
+            const yearSummaryEl = document.getElementById('year-summary');
+            const lastUpdatedEl = document.getElementById('pub-last-updated');
+            const searchInput = document.getElementById('pub-search');
+            const yearFilter = document.getElementById('year-filter');
+
+            var allPubs = [];
+
+            function createCard(pub) {
+                const card = document.createElement('article');
+                card.className = 'glass-lite publication-card p-8 rounded-2xl border-l-4 border-slate-700 hover:border-blue-500/50 transition-all';
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'flex flex-col md:flex-row gap-6';
+
+                const imgCol = document.createElement('div');
+                imgCol.className = 'md:w-32 flex-shrink-0';
+                const img = document.createElement('div');
+                img.className = 'w-full rounded-xl shadow-lg border border-white/10 bg-gradient-to-br from-blue-500/20 to-purple-500/10 flex items-center justify-center text-slate-300 text-xs text-center px-3 py-6';
+                img.textContent = pub.venue || 'Publication';
+                imgCol.appendChild(img);
+
+                const body = document.createElement('div');
+                body.className = 'flex-1';
+
+                const metaRow = document.createElement('div');
+                metaRow.className = 'flex items-center gap-2 mb-3';
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-file-alt text-slate-500';
+                const status = document.createElement('span');
+                status.className = 'text-xs text-slate-500 uppercase tracking-widest font-bold';
+                status.textContent = (typeof pub.citedBy === 'number' && pub.citedBy > 0) ? 'Published' : 'Preprint / Working';
+                metaRow.appendChild(icon);
+                metaRow.appendChild(status);
+
+                const title = document.createElement('h3');
+                title.className = 'text-xl md:text-2xl font-bold mb-3 leading-tight';
+                title.textContent = pub.title;
+
+                const authors = document.createElement('p');
+                authors.className = 'text-slate-400 text-sm mb-2';
+                if (pub.authors) {
+                    authors.textContent = pub.authors;
+                }
+
+                const venueLine = document.createElement('p');
+                venueLine.className = 'text-slate-500 text-sm mb-1';
+                var venueParts = [];
+                if (pub.venue) venueParts.push(pub.venue);
+                if (pub.year) venueParts.push(pub.year);
+                venueLine.textContent = venueParts.join(' · ');
+
+                const citeLine = document.createElement('p');
+                citeLine.className = 'text-slate-600 text-xs mb-3';
+                if (typeof pub.citedBy === 'number' && pub.citedBy > 0) {
+                    citeLine.textContent = pub.citedBy + ' citation' + (pub.citedBy === 1 ? '' : 's') + ' (Google Scholar)';
+                }
+
+                const linkRow = document.createElement('div');
+                if (pub.link) {
+                    const link = document.createElement('a');
+                    link.href = pub.link;
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    link.className = 'btn-secondary inline-block';
+                    link.innerHTML = '<i class="fas fa-external-link-alt mr-2"></i>View on Google Scholar';
+                    linkRow.appendChild(link);
+                }
+
+                body.appendChild(metaRow);
+                body.appendChild(title);
+                if (pub.authors) body.appendChild(authors);
+                body.appendChild(venueLine);
+                if (citeLine.textContent) body.appendChild(citeLine);
+                body.appendChild(linkRow);
+
+                wrapper.appendChild(imgCol);
+                wrapper.appendChild(body);
+                card.appendChild(wrapper);
+                return card;
+            }
+
+            function updateSummary(pubs) {
+                countEl.textContent = pubs.length + ' publications';
+
+                const yearCounts = {};
+                pubs.forEach(function (p) {
+                    if (p.year) {
+                        yearCounts[p.year] = (yearCounts[p.year] || 0) + 1;
+                    }
+                });
+
+                const years = Object.keys(yearCounts).sort(function (a, b) { return b.localeCompare(a); });
+                if (years.length) {
+                    yearSummaryEl.textContent = 'Years: ' + years.join(', ');
+                    yearSummaryEl.classList.remove('hidden');
+                } else {
+                    yearSummaryEl.classList.add('hidden');
+                }
+            }
+
+            function updateYearFilterOptions(pubs) {
+                const seen = {};
+                pubs.forEach(function (p) {
+                    if (p.year) seen[p.year] = true;
+                });
+                const years = Object.keys(seen).sort(function (a, b) { return b.localeCompare(a); });
+
+                yearFilter.innerHTML = '<option value="">All years</option>';
+                years.forEach(function (y) {
+                    const opt = document.createElement('option');
+                    opt.value = y;
+                    opt.textContent = y;
+                    yearFilter.appendChild(opt);
+                });
+            }
+
+            function setLastUpdated(ts) {
+                if (!lastUpdatedEl) return;
+                try {
+                    const d = new Date(ts);
+                    if (!isNaN(d.getTime())) {
+                        lastUpdatedEl.textContent = 'Feed last updated ' + d.toLocaleString();
+                    }
+                } catch (e) {
+                    // ignore
+                }
+            }
+
+            function render(pubs) {
+                listEl.innerHTML = '';
+                emptyEl.classList.add('hidden');
+
+                if (!pubs.length) {
+                    emptyEl.classList.remove('hidden');
+                    return;
+                }
+
+                pubs.forEach(function (pub) {
+                    listEl.appendChild(createCard(pub));
+                });
+            }
+
+            function applyFilters() {
+                const term = (searchInput.value || '').toLowerCase();
+                const year = yearFilter.value;
+
+                const filtered = allPubs.filter(function (p) {
+                    if (year && p.year !== year) return false;
+                    if (!term) return true;
+                    const haystack = [
+                        p.title || '',
+                        p.authors || '',
+                        p.venue || ''
+                    ].join(' ').toLowerCase();
+                    return haystack.indexOf(term) !== -1;
+                });
+
+                render(filtered);
+                updateSummary(filtered);
+            }
+
+            function tryLoadFromCache() {
+                try {
+                    const raw = localStorage.getItem(CACHE_KEY);
+                    if (!raw) return null;
+                    const cached = JSON.parse(raw);
+                    if (!cached || !Array.isArray(cached.data) || !cached.timestamp) return null;
+                    if (Date.now() - cached.timestamp > CACHE_TTL_MS) return null;
+                    return cached;
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function saveToCache(data) {
+                try {
+                    localStorage.setItem(CACHE_KEY, JSON.stringify({
+                        data: data,
+                        timestamp: Date.now()
+                    }));
+                } catch (e) {
+                    // ignore
+                }
+            }
+
+            function loadFromData(data, timestamp) {
+                if (!Array.isArray(data)) return;
+
+                allPubs = data.slice().sort(function (a, b) {
+                    // Sort by year desc, then by title
+                    const ya = a.year || '';
+                    const yb = b.year || '';
+                    if (ya !== yb) return yb.localeCompare(ya);
+                    return (a.title || '').localeCompare(b.title || '');
+                });
+
+                updateYearFilterOptions(allPubs);
+                applyFilters();
+                setLastUpdated(timestamp || Date.now());
+            }
+
+            // Initial render: use cache if available, otherwise inline fallback
+            const cached = tryLoadFromCache();
+            if (cached && cached.data && cached.data.length) {
+                loadFromData(cached.data, cached.timestamp);
+            } else {
+                loadFromData(INLINE_PUBLICATIONS, Date.now());
+            }
+
+            // Only attempt network fetch when served over HTTP(S), not file://
+            if (location.protocol === 'http:' || location.protocol === 'https:') {
+                fetch(JSON_URL, { credentials: 'omit' })
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('Publications JSON responded with ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        if (!Array.isArray(data) || !data.length) return;
+                        loadFromData(data, Date.now());
+                        saveToCache(data);
+                    })
+                    .catch(function (err) {
+                        if (!cached || !cached.data || !cached.data.length) {
+                            errorEl.classList.remove('hidden');
+                            if (errorMsgEl) {
+                                errorMsgEl.textContent = err.message || String(err);
+                            }
+                            countEl.textContent = 'Error';
+                        }
+                    });
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', applyFilters);
+            }
+            if (yearFilter) {
+                yearFilter.addEventListener('change', applyFilters);
+            }
+        })();
+    </script>
+</body>
+</html>
+

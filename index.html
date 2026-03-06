@@ -1,480 +1,299 @@
-<!DOCTYPE HTML>
-<!--
-	Strata by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Sam Thompson's Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel E. R. Thompson | XR Engineer & Researcher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="hero-gradient">
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
-					<h1><strong>I'm Sam Thompson</strong>, <br />a PhD student @ the University of Cambridge</h1>
-				</div>
-			</header>
+    <div id="navbar-container"></div>
 
-		<!-- Main -->
-			<div id="main">
+    <section id="about" class="min-h-screen flex flex-col items-center text-center px-6 relative pt-20">
+        <div class="decorative-circle" style="width: 400px; height: 400px; top: -200px; right: -200px;"></div>
+        <div class="decorative-circle" style="width: 300px; height: 300px; bottom: -150px; left: -150px;"></div>
+        
+        <div class="fade-in-up max-w-4xl flex-1 flex flex-col justify-center">
+            <div class="mt-4 mb-0 w-full flex justify-center">
+                <img src="images/avatar.jpg" 
+                     alt="VR Technology" 
+                     class="w-64 h-64 md:w-400 md:h-400 rounded-full mb-4 border-4 border-blue-500/30 shadow-2xl glow-blue object-cover">
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 leading-tight">
+                Engineering <span class="accent-text">Immersive</span> Realities.
+            </h1>
+            <p class="max-w-3xl text-lg md:text-xl text-slate-400 leading-relaxed mb-6 mx-auto">
+                XR engineer and PhD student at the <b class="text-blue-400">University of Cambridge</b> specialising in Social VR and embodied conversational agents.
+                I build intelligent, full-stack XR systems that turn novel human–AI interaction ideas into working immersive experiences.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
+                <a href="projects.html" class="btn-primary">
+                    <i class="fas fa-rocket mr-2"></i>View My Work
+                </a>
+                <a href="https://scholar.google.com/citations?user=I4Zl2NIAAAAJ" target="_blank" class="btn-secondary">
+                    <i class="ai ai-google-scholar mr-2"></i>Google Scholar
+                </a>
+            </div>
+            <div class="mt-3 flex flex-col sm:flex-row gap-3 justify-center items-center text-xs text-slate-400">
+                <span class="uppercase tracking-widest text-[11px]">Currently seeking</span>
+                <span class="glass px-3 py-1 rounded-full text-[11px]">
+                    XR research engineer · Social VR / HCI roles · Technical R&amp;D collaborations
+                </span>
+                <a href="cv.pdf" class="btn-secondary text-[11px] px-4 py-2">
+                    <i class="fas fa-file-alt mr-2"></i>Download CV
+                </a>
+            </div>
+        </div>
+        
+        <a href="#dev" class="flex-shrink-0 pb-6 pt-2 animate-bounce flex flex-col items-center" aria-label="Scroll to projects">
+            <i class="fas fa-chevron-down text-blue-400 text-2xl"></i>
+            <span class="hidden md:block text-[11px] uppercase tracking-widest text-slate-500 mt-1">Scroll to projects</span>
+        </a>
+    </section>
 
-				<!-- One -->
-					<section id="one">
-						<header class="major">
-							<h2>What do I do?</h2>
-						</header>
-						<p>I'm a PhD student in the Department of Engineering at the University of Cambridge, where I'm supervised by <a href="https://engage.ifm.eng.cam.ac.uk/project/thomas-bohne/">Prof. Thomas Bohné</a>. I did my undergraduate studies in Computer Science at the University of Auckland where I was supervised by <a href="https://profiles.auckland.ac.nz/bwue001">Dr. Burkhard Wünsche</a>, where I graduated with First Class Honours. My research focuses on embodied conversational agents in social VR, however I'm also interested in XR and AI more generally, education, and computer graphics. Since a young age I have had a strong passion for game development, and have developed various games outside of my studies. I'm the current co-president of the University of Cambridge AR/VR Society, and I am the current president of Intercollegiate XR (ICXR), an international community of student XR clubs.</p>
-						<ul class="actions">
-							<li><a href="https://scholar.google.com/citations?user=I4Zl2NIAAAAJ&hl=en" class="button">My Research</a></li>
-							<li><a href="https://taintedflamegames.itch.io/" class="button">My Games on itch.io</a></li>
+    <section id="dev" class="py-24 max-w-6xl mx-auto px-6 relative">
+        <div class="mb-16 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                Engineering & <span class="accent-text">Games</span>
+            </h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded mx-auto"></div>
+            <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
+                Building immersive experiences that push the boundaries of interactive technology
+            </p>
+        </div>
 
-						</ul>
-					</section>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="glass project-card p-6 rounded-3xl group">
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop&q=80" 
+                         alt="YEET Game" 
+                         class="project-img w-full">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fab fa-steam text-2xl"></i>
+                    </div>
+                </div>
+                <div class="flex gap-2 mb-3">
+                    <span class="tech-tag">Unity</span>
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">Steam</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">YEET</h3>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">A physics-based arcade experience published on Steam. Built with a focus on polished game-feel and high-performance C# code.</p>
+                <a href="https://store.steampowered.com/app/2307030/YEET/" target="_blank" class="text-blue-400 font-bold text-sm hover:text-blue-300 transition inline-flex items-center gap-2">
+                    Steam Page <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
 
-				<!-- Research Work -->
-					<section id="two">
-						<h2>Research Work</h2>
-						<div class="row">
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
-								<h3>Now You're Thinking with Portals: Investigating Episodic Memory and Locomotion with Redirected Walking in Impossible Spaces</h3>
-								<p>Read the full paper <a href="https://www.mdpi.com/2813-2084/4/3/39">here</a></p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="" /></a>
-								<h3>Relationship Between Motivational Strategies and Gamification User Types in VR Movement Games</h3>
-								<p>Read the full paper <a href="https://ieeexplore.ieee.org/abstract/document/10344250">here</a></p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="" /></a>
-								<h3>Embodied Conversational Agents in Social VR</h3>
-								<p>Work in progress</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="" /></a>
-								<h3>Embodied Identities: Investigating the Effect of Personalised Avatars with Face Tracking on Embodiment in Social VR</h3>
-								<p>Paper under review</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/05.jpg" class="image fit thumb"><img src="images/thumbs/05.jpg" alt="" /></a>
-								<h3>Auditory temporal hints in AR piano tutoring</h3>
-								<p>Read the full paper <a href="https://ieeexplore.ieee.org/abstract/document/10343724">here</a></p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="" /></a>
-								<h3>Hands-on DNA: Exploring the Impact of Virtual Reality on Teaching DNA Structure and Function</h3>
-								<p>Read the full paper <a href="https://dl.acm.org/doi/abs/10.1145/3611659.3615684">here</a></p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/07.jpg" class="image fit thumb"><img src="images/thumbs/07.jpg" alt="" /></a>
-								<h3>That's the way I (dis-)like it! - Effect of Gamer Types and Competitiveness in VR Exergaming</h3>
-								<p>Read the full paper <a href="https://dl.acm.org/doi/abs/10.1145/3677105">here</a></p>
-							</article>
-						</div>
-						<ul class="actions">
-							<li><a href="https://scholar.google.com/citations?user=I4Zl2NIAAAAJ&hl=en" class="button">See the rest of my research work on my Google Scholar page</a></li>
-						</ul>
+            <div class="glass project-card p-6 rounded-3xl group">
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=600&fit=crop&q=80" 
+                         alt="Chroma Chameleon" 
+                         class="project-img w-full">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fas fa-gamepad text-2xl"></i>
+                    </div>
+                </div>
+                <div class="flex gap-2 mb-3">
+                    <span class="tech-tag">Unity</span>
+                    <span class="tech-tag">Game Design</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Chroma Chameleon</h3>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">A color-switching platformer designed for precision. Explore a variety of mechanics developed during independent game jams.</p>
+                <a href="https://taintedflamegames.itch.io/chroma-chameleon" target="_blank" class="text-blue-400 font-bold text-sm hover:text-blue-300 transition inline-flex items-center gap-2">
+                    Play on Itch.io <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
 
-					<!-- Two -->
-						<h2>Game Development</h2>
-						<div class="row">
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/01a.jpg" class="image fit thumb"><img src="images/thumbs/01a.jpg" alt="" /></a>
-								<h3>YEET</h3>
-								<p>Check out the game <a href="https://store.steampowered.com/app/2307030/YEET/">here</a></p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/02a.jpg" class="image fit thumb"><img src="images/thumbs/02a.jpg" alt="" /></a>
-								<h3>Chroma Chameleon</h3>
-								<p>Play the game <a href="https://taintedflamegames.itch.io/chroma-chameleon">here</a></p>
-							</article>
-							
-						</div>
-						<ul class="actions">
-							<li><a href="https://taintedflamegames.itch.io/" class="button">More (including game jams) on itch.io</a></li>
-						</ul>
-					</section>
+            <div class="glass project-card p-6 rounded-3xl group">
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                    <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=800&h=600&fit=crop&q=80" 
+                         alt="Impossible Spaces VR" 
+                         class="project-img w-full">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fas fa-vr-cardboard text-2xl"></i>
+                    </div>
+                </div>
+                <div class="flex gap-2 mb-3">
+                    <span class="tech-tag">VR</span>
+                    <span class="tech-tag">Research</span>
+                    <span class="tech-tag">Unity</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Impossible Spaces VR</h3>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">Technical implementation of redirected walking in non-Euclidean environments. Highlights my ability to bridge research and code.</p>
+                <a href="https://github.com/Flame1190/CompSci-715-Unity" target="_blank" class="text-blue-400 font-bold text-sm hover:text-blue-300 transition inline-flex items-center gap-2">
+                    GitHub Source <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="projects.html" class="btn-secondary">
+                View All Projects <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
 
-				<!-- Three -->
-					<section id="three">
-						<h2>Get In Touch</h2>
-						<p></p>
-						 <!--- <div class="row">
-							<div class="col-8 col-12-small">
-								<form method="post" action="#">
-									<div class="row gtr-uniform gtr-50">
-										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
-									</div>
-								</form>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</div> --->
-							<div class="col-4 col-12-small">
-								<ul class="labeled-icons">
-									<li>
-										<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-										Cambridge,<br />
-										United Kingdom
-									</li>
-									
-									<li>
-										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-										<a href="#">sam.thompson.xr@gmail.com</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</section>
+    <section id="research" class="py-24 relative">
+        <div class="absolute inset-0 grid-pattern opacity-30"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Research & <span class="accent-text">Publications</span>
+                </h2>
+                <div class="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded mx-auto"></div>
+                <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
+                    Advancing the field of Human-Computer Interaction through rigorous research
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="glass publication-card p-6 rounded-2xl border-l-4 border-blue-500 hover:border-blue-400 transition-all">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-24 flex-shrink-0">
+                            <div class="text-blue-400 font-mono font-bold text-lg mb-2">2025</div>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop&q=80" 
+                                 alt="Research" 
+                                 class="w-full rounded-lg opacity-80">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-2 leading-tight">Now You're Thinking with Portals: Investigating Episodic Memory and Locomotion with Redirected Walking in Impossible Spaces</h3>
+                            <p class="text-slate-400 text-sm italic mb-3">Virtual Worlds 4 (3), 39</p>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="tech-tag">VR Locomotion</span>
+                                <span class="tech-tag">Spatial Memory</span>
+                                <span class="tech-tag">HCI</span>
+                            </div>
+                            <a href="https://www.mdpi.com/2813-2084/4/3/39" target="_blank" class="text-blue-400 text-sm hover:text-blue-300 transition inline-flex items-center gap-2">
+                                Read Paper <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-				<!-- Four -->
-				<!--
-					<section id="four">
-						<h2>Elements</h2>
+                <div class="glass publication-card p-6 rounded-2xl border-l-4 border-slate-700 hover:border-blue-500/50 transition-all">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-24 flex-shrink-0">
+                            <div class="text-slate-500 font-mono font-bold text-lg mb-2">2024</div>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop&q=80" 
+                                 alt="Research" 
+                                 class="w-full rounded-lg opacity-60">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-2 leading-tight">That's the way I (dis-) like it! - Effect of Gamer Types and Competitiveness in VR Exergaming</h3>
+                            <p class="text-slate-400 text-sm italic mb-3">ACM CHI PLAY 2024</p>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="tech-tag">HCI</span>
+                                <span class="tech-tag">Gamification</span>
+                                <span class="tech-tag">Exergaming</span>
+                            </div>
+                            <a href="https://scholar.google.com/citations?user=I4Zl2NIAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="text-blue-400 text-sm hover:text-blue-300 transition inline-flex items-center gap-2">
+                                Read Paper <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-						<section>
-							<h4>Text</h4>
-							<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-							This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-							This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-							<hr />
-							<header>
-								<h4>Heading with a Subtitle</h4>
-								<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-							</header>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-							<header>
-								<h5>Heading with a Subtitle</h5>
-								<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-							</header>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-							<hr />
-							<h2>Heading Level 2</h2>
-							<h3>Heading Level 3</h3>
-							<h4>Heading Level 4</h4>
-							<h5>Heading Level 5</h5>
-							<h6>Heading Level 6</h6>
-							<hr />
-							<h5>Blockquote</h5>
-							<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-							<h5>Preformatted</h5>
-							<pre><code>i = 0;
+                <div class="glass publication-card p-6 rounded-2xl border-l-4 border-slate-700 hover:border-blue-500/50 transition-all">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-24 flex-shrink-0">
+                            <div class="text-slate-500 font-mono font-bold text-lg mb-2">2023</div>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop&q=80" 
+                                 alt="Research" 
+                                 class="w-full rounded-lg opacity-60">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-2 leading-tight">Hands-on DNA: Exploring the Impact of Virtual Reality on Teaching DNA Structure</h3>
+                            <p class="text-slate-400 text-sm mb-3">ACM VRST 2023</p>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="tech-tag">VR Education</span>
+                                <span class="tech-tag">Molecular Biology</span>
+                            </div>
+                            <a href="https://scholar.google.com/citations?user=I4Zl2NIAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="text-blue-400 text-sm hover:text-blue-300 transition inline-flex items-center gap-2">
+                                Read Paper <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-while (!deck.isInOrder()) {
-print 'Iteration ' + i;
-deck.shuffle();
-i++;
-}
+                <div class="glass publication-card p-6 rounded-2xl border-l-4 border-slate-700 hover:border-blue-500/50 transition-all">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="md:w-24 flex-shrink-0">
+                            <div class="text-slate-500 font-mono font-bold text-lg mb-2">2023</div>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=200&fit=crop&q=80" 
+                                 alt="Research" 
+                                 class="w-full rounded-lg opacity-60">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-2 leading-tight">Auditory temporal hints in AR piano tutoring</h3>
+                            <p class="text-slate-400 text-sm mb-3">IVCNZ 2023</p>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="tech-tag">Augmented Reality</span>
+                                <span class="tech-tag">EdTech</span>
+                            </div>
+                            <a href="https://scholar.google.com/citations?user=I4Zl2NIAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="text-blue-400 text-sm hover:text-blue-300 transition inline-flex items-center gap-2">
+                                Read Paper <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="research.html" class="btn-secondary">
+                    View All Research <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="https://scholar.google.com/citations?user=I4Zl2NIAAAAJ" target="_blank" class="btn-secondary">
+                    <i class="ai ai-google-scholar mr-2"></i>Google Scholar
+                </a>
+            </div>
+        </div>
+    </section>
 
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-						</section>
+    <footer id="contact" class="py-24 text-center relative overflow-hidden">
+        <div class="decorative-circle" style="width: 500px; height: 500px; top: -250px; right: -250px; opacity: 0.5;"></div>
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="mb-8">
+                <img src="images/fulls/cambridge.jpg" 
+                     alt="Collaboration" 
+                     class="w-full max-w-2xl mx-auto rounded-2xl shadow-2xl border border-white/10 mb-8">
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                Let's work <span class="accent-text">together</span>.
+            </h2>
+            <p class="text-slate-400 mb-8 max-w-lg mx-auto text-lg">
+                Currently researching in <span class="text-blue-400 font-semibold">Cambridge, UK</span>. Open to technical R&D opportunities and collaborations.
+            </p>
+            
+            <div class="flex justify-center gap-6 mb-12 flex-wrap">
+                <a href="https://github.com/Flame1190" target="_blank" 
+                   class="glass p-4 rounded-xl text-2xl text-slate-400 hover:text-white hover:border-blue-500/50 transition-all hover:scale-110 hover:glow-blue">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sam-ross-thompson/" target="_blank" 
+                   class="glass p-4 rounded-xl text-2xl text-slate-400 hover:text-white hover:border-blue-500/50 transition-all hover:scale-110 hover:glow-blue">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:sam.thompson.xr@gmail.com" 
+                   class="glass p-4 rounded-xl text-2xl text-slate-400 hover:text-white hover:border-blue-500/50 transition-all hover:scale-110 hover:glow-blue">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://scholar.google.com/citations?user=I4Zl2NIAAAAJ" target="_blank" 
+                   class="glass p-4 rounded-xl text-2xl text-slate-400 hover:text-white hover:border-blue-500/50 transition-all hover:scale-110 hover:glow-blue">
+                    <i class="ai ai-google-scholar"></i>
+                </a>
+            </div>
+            
+            <p class="text-slate-600 text-xs uppercase tracking-widest">&copy; 2025 Samuel E. R. Thompson</p>
+        </div>
+    </footer>
 
-						<section>
-							<h4>Lists</h4>
-							<div class="row">
-								<div class="col-6 col-12-xsmall">
-									<h5>Unordered</h5>
-									<ul>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Sagittis adipiscing lorem eleifend.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ul>
-									<h5>Alternate</h5>
-									<ul class="alt">
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Sagittis adipiscing lorem eleifend.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-xsmall">
-									<h5>Ordered</h5>
-									<ol>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Etiam vel felis at lorem sed viverra.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Etiam vel felis at lorem sed viverra.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ol>
-									<h5>Icons</h5>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-										<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-										<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
-									</ul>
-								</div>
-							</div>
-							<h5>Actions</h5>
-							<ul class="actions">
-								<li><a href="#" class="button primary">Default</a></li>
-								<li><a href="#" class="button">Default</a></li>
-							</ul>
-							<ul class="actions small">
-								<li><a href="#" class="button primary small">Small</a></li>
-								<li><a href="#" class="button small">Small</a></li>
-							</ul>
-							<div class="row">
-								<div class="col-6 col-12-small">
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary small">Small</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary fit">Default</a></li>
-										<li><a href="#" class="button fit">Default</a></li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary small fit">Small</a></li>
-										<li><a href="#" class="button small fit">Small</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-
-						<section>
-							<h4>Table</h4>
-							<h5>Default</h5>
-							<div class="table-wrapper">
-								<table>
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Item One</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Two</td>
-											<td>Vis ac commodo adipiscing arcu aliquet.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Three</td>
-											<td> Morbi faucibus arcu accumsan lorem.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Four</td>
-											<td>Vitae integer tempus condimentum.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Five</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="2"></td>
-											<td>100.00</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-
-							<h5>Alternate</h5>
-							<div class="table-wrapper">
-								<table class="alt">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Item One</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Two</td>
-											<td>Vis ac commodo adipiscing arcu aliquet.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Three</td>
-											<td> Morbi faucibus arcu accumsan lorem.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Four</td>
-											<td>Vitae integer tempus condimentum.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Five</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="2"></td>
-											<td>100.00</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-						</section>
-
-						<section>
-							<h4>Buttons</h4>
-							<ul class="actions">
-								<li><a href="#" class="button primary">Primary</a></li>
-								<li><a href="#" class="button">Default</a></li>
-							</ul>
-							<ul class="actions">
-								<li><a href="#" class="button large">Large</a></li>
-								<li><a href="#" class="button">Default</a></li>
-								<li><a href="#" class="button small">Small</a></li>
-							</ul>
-							<ul class="actions fit">
-								<li><a href="#" class="button primary fit">Fit</a></li>
-								<li><a href="#" class="button fit">Fit</a></li>
-							</ul>
-							<ul class="actions fit small">
-								<li><a href="#" class="button primary fit small">Fit + Small</a></li>
-								<li><a href="#" class="button fit small">Fit + Small</a></li>
-							</ul>
-							<ul class="actions">
-								<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
-								<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-							</ul>
-							<ul class="actions">
-								<li><span class="button primary disabled">Primary</span></li>
-								<li><span class="button disabled">Default</span></li>
-							</ul>
-						</section>
-
-						<section>
-							<h4>Form</h4>
-							<form method="post" action="#">
-								<div class="row gtr-uniform gtr-50">
-									<div class="col-6 col-12-xsmall">
-										<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-									</div>
-									<div class="col-6 col-12-xsmall">
-										<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-									</div>
-									<div class="col-12">
-										<select name="demo-category" id="demo-category">
-											<option value="">- Category -</option>
-											<option value="1">Manufacturing</option>
-											<option value="1">Shipping</option>
-											<option value="1">Administration</option>
-											<option value="1">Human Resources</option>
-										</select>
-									</div>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-										<label for="demo-priority-low">Low Priority</label>
-									</div>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-normal" name="demo-priority">
-										<label for="demo-priority-normal">Normal Priority</label>
-									</div>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-high" name="demo-priority">
-										<label for="demo-priority-high">High Priority</label>
-									</div>
-									<div class="col-6 col-12-small">
-										<input type="checkbox" id="demo-copy" name="demo-copy">
-										<label for="demo-copy">Email me a copy of this message</label>
-									</div>
-									<div class="col-6 col-12-small">
-										<input type="checkbox" id="demo-human" name="demo-human" checked>
-										<label for="demo-human">I am a human and not a robot</label>
-									</div>
-									<div class="col-12">
-										<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-									</div>
-									<div class="col-12">
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</div>
-								</div>
-							</form>
-						</section>
-
-						<section>
-							<h4>Image</h4>
-							<h5>Fit</h5>
-							<div class="box alt">
-								<div class="row gtr-50 gtr-uniform">
-									<div class="col-12"><span class="image fit"><img src="images/fulls/05.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/01.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/04.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/05.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/06.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/01.jpg" alt="" /></span></div>
-								</div>
-							</div>
-							<h5>Left &amp; Right</h5>
-							<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-							<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-						</section>
-
-					</section>
-				-->
-
-			</div>
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://x.com/RealRealSam" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="https://github.com/Flame1190" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="https://www.linkedin.com/in/sam-ross-thompson/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						<li><a href="mailto:sam.thompson.xr@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					
-				</div>
-			</footer>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+    <script src="navbar.js"></script>
+</body>
 </html>
