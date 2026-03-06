@@ -40,12 +40,21 @@ def fetch_all_publications(api_key: str, author_id: str) -> List[Dict]:
             cited = art.get("cited_by", {}) or {}
             cited_value = cited.get("value")
 
+            # SerpAPI can expose author / venue / year in different places depending on the result.
+            raw_authors = art.get("authors") or info.get("authors") or ""
+            # If authors is a list of dicts, normalise to "Name1, Name2, ..."
+            if isinstance(raw_authors, list):
+                raw_authors = ", ".join(a.get("name", "").strip() for a in raw_authors if a.get("name"))
+
+            venue = art.get("publication") or info.get("summary") or ""
+            year_val = art.get("year") if art.get("year") is not None else info.get("year")
+
             publications.append(
                 {
                     "title": art.get("title") or "",
-                    "authors": info.get("authors") or "",
-                    "venue": info.get("summary") or "",
-                    "year": str(info.get("year")) if info.get("year") is not None else "",
+                    "authors": raw_authors or "",
+                    "venue": venue or "",
+                    "year": str(year_val) if year_val is not None else "",
                     "link": (art.get("link") or art.get("citation_id") or ""),
                     "citedBy": int(cited_value) if isinstance(cited_value, int) else 0,
                 }

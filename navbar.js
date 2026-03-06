@@ -9,6 +9,7 @@
   const isProjects = file === 'projects.html';
   const isGitHubProjects = file === 'github-projects.html';
   const isResearch = file === 'research.html';
+  const isScholarFeed = file === 'scholar-publications.html';
 
   const logoHref = isIndex ? '#about' : 'index.html';
   const aboutHref = isIndex ? '#about' : 'index.html#about';
@@ -51,7 +52,25 @@
         </div>
       </div>
 
-      ${link('research.html', 'Research', isResearch)}
+      <div class="relative nav-group">
+        <a href="research.html" class="transition flex items-center gap-2${isResearch || isScholarFeed ? ' text-blue-400' : ' hover:text-blue-400'}">
+          <span>Research</span>
+          <i class="fas fa-chevron-down text-[10px] mt-[1px]"></i>
+        </a>
+        <div class="absolute left-1/2 -translate-x-1/2 top-full hidden z-40 nav-dropdown">
+          <div class="mt-2 w-60 rounded-2xl glass border border-white/10 shadow-xl">
+            <div class="py-2">
+              <a href="research.html" class="block px-4 py-2 text-[11px] text-slate-300 hover:text-white hover:bg-white/5">
+                Selected papers & projects
+              </a>
+              <a href="scholar-publications.html" class="block px-4 py-2 text-[11px] text-slate-300 hover:text-white hover:bg-white/5">
+                All publications (Scholar)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       ${link(contactHref, 'Contact', false)}
     </div>
     <button id="mobile-menu-btn" class="md:hidden text-xl p-2 text-slate-400 hover:text-white transition" aria-label="Toggle menu" aria-expanded="false">
@@ -64,7 +83,9 @@
       <span class="text-[11px] text-slate-500 pt-2">Engineering</span>
       <a href="projects.html" class="mobile-nav-link hover:text-blue-400 transition py-1 pl-3 text-[11px]">Showcase projects</a>
       <a href="github-projects.html" class="mobile-nav-link hover:text-blue-400 transition py-1 pl-3 text-[11px]">GitHub repositories</a>
-      <a href="research.html" class="mobile-nav-link hover:text-blue-400 transition py-2">Research</a>
+      <span class="text-[11px] text-slate-500 pt-2">Research</span>
+      <a href="research.html" class="mobile-nav-link hover:text-blue-400 transition py-1 pl-3 text-[11px]">Selected papers & projects</a>
+      <a href="scholar-publications.html" class="mobile-nav-link hover:text-blue-400 transition py-1 pl-3 text-[11px]">All publications (Scholar)</a>
       <a href="${contactHref}" class="mobile-nav-link hover:text-blue-400 transition py-2">Contact</a>
     </div>
   </div>

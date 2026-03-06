@@ -16,14 +16,14 @@
     <main class="max-w-5xl mx-auto px-6 mt-12 relative pt-24">
         <div class="text-center mb-16 fade-in-up">
             <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
-                Google Scholar <span class="accent-text">Feed</span>
+                All Publications <span class="accent-text">(Google Scholar)</span>
             </h1>
             <div class="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded mx-auto mb-6"></div>
-            <p class="text-slate-400 max-w-2xl mx-auto">
-                A live view of my publications as tracked by Google Scholar, rendered from a structured JSON feed.
+            <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+                Automatically synced list of all publications from my Google Scholar profile, with search, year filters, and citation counts.
             </p>
             <p class="text-slate-500 max-w-2xl mx-auto text-xs mt-3">
-                For a hand‑crafted narrative of selected work, see the <a href="research.html" class="text-blue-400 hover:text-blue-300 font-semibold">Research Archive</a>.
+                For narrative context and a smaller, hand‑picked set of projects, see the <a href="research.html" class="text-blue-400 hover:text-blue-300 font-semibold">Selected Publications</a> page.
             </p>
         </div>
 
@@ -56,7 +56,7 @@
             </div>
         </section>
 
-        <section id="pub-list" class="space-y-6">
+        <section id="pub-list" class="space-y-3">
             <!-- Publication cards injected here -->
         </section>
 
@@ -162,7 +162,7 @@
 
             function createCard(pub) {
                 const card = document.createElement('article');
-                card.className = 'glass publication-card p-8 rounded-2xl border-l-4 border-slate-700 hover:border-blue-500/50 transition-all';
+                card.className = 'glass-lite publication-card p-8 rounded-2xl border-l-4 border-slate-700 hover:border-blue-500/50 transition-all';
 
                 const wrapper = document.createElement('div');
                 wrapper.className = 'flex flex-col md:flex-row gap-6';

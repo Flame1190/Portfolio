@@ -40,16 +40,20 @@ html {
 /* Glass morphism effect */
 .glass {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--border-color);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Lightweight glass (no blur) for large lists */
+.glass-lite {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: 0 4px 16px 0 rgba(15, 23, 42, 0.6);
 }
 
 /* Hero gradient background */
 .hero-gradient {
     background: radial-gradient(ellipse at top, #1e293b 0%, #0f1624 50%, #0a0e1a 100%);
-    background-attachment: fixed;
     position: relative;
     min-height: 100vh;
 }
@@ -73,13 +77,6 @@ html {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    background-size: 200% 200%;
-    animation: gradient-shift 3s ease infinite;
-}
-
-@keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
 }
 
 /* Project card hover effects */
