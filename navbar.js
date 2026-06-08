@@ -27,7 +27,12 @@
   };
 
   const navHtml = `
-  
+  <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png?v=20260608" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg?v=20260608" />
+<link rel="shortcut icon" href="/images/favicon/favicon.ico?v=20260608" />
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=20260608" />
+<meta name="apple-mobile-web-app-title" content="Sam Thompson" />
+<link rel="manifest" href="/images/favicon/site.webmanifest?v=20260608" />
 <nav id="navbar" class="fixed w-full z-50 py-6 glass border-b border-white/5">
   <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
     <a href="${logoHref}" class="text-xl font-extrabold tracking-tighter hover:scale-105 transition-transform"><span class="accent-text">Sam</span> Thompson</a>
