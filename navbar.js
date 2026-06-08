@@ -27,6 +27,7 @@
   };
 
   const navHtml = `
+  
 <nav id="navbar" class="fixed w-full z-50 py-6 glass border-b border-white/5">
   <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
     <a href="${logoHref}" class="text-xl font-extrabold tracking-tighter hover:scale-105 transition-transform"><span class="accent-text">Sam</span> Thompson</a>

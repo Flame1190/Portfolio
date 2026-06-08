@@ -1,0 +1,21 @@
+{
+  "name": "Sam Thompson",
+  "short_name": "Sam T.",
+  "icons": [
+    {
+      "src": "/images/favicon/web-app-manifest-192x192.png?v=20260608",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/favicon/web-app-manifest-512x512.png?v=20260608",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#040b30",
+  "background_color": "#0c062f",
+  "display": "standalone"
+}
