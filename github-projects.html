@@ -15,10 +15,10 @@
 
     <main class="max-w-6xl mx-auto px-6 mt-12 relative pt-24">
         <div class="text-center mb-16 fade-in-up">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
-                GitHub <span class="accent-text">Repository Archive</span>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+                GitHub <span class="accent-text">repositories</span>
             </h1>
-            <div class="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded mx-auto mb-6"></div>
+            <div class="section-rule mx-auto mb-6"></div>
             <p class="text-slate-400 max-w-2xl mx-auto text-lg">
                 A live view of non-archived repositories from my GitHub account&mdash;including prototypes, tools, and work-in-progress ideas.
             </p>
@@ -27,7 +27,7 @@
             </p>
         </div>
 
-        <section class="glass rounded-3xl p-4 mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
+        <section class="glass rounded-xl p-4 mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
             <div class="text-slate-400 text-sm">
                 <span class="font-semibold text-slate-200">Source:</span>
                 <a href="https://github.com/Flame1190" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold inline-flex items-center gap-2">
@@ -42,7 +42,7 @@
         </section>
 
         <section class="mb-6 flex flex-col md:flex-row gap-4 items-center justify-between">
-            <div class="text-xs text-slate-500 uppercase tracking-widest">
+            <div class="text-sm text-slate-500">
                 Filter repositories
             </div>
             <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
@@ -100,7 +100,7 @@
                 const topics = Array.isArray(repo.topics) ? repo.topics : [];
 
                 const card = document.createElement('article');
-                card.className = 'glass project-card p-6 rounded-3xl group h-full flex flex-col';
+                card.className = 'glass project-card p-6 group h-full flex flex-col';
 
                 const header = document.createElement('div');
                 header.className = 'flex items-start justify-between gap-3 mb-4';

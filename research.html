@@ -16,10 +16,10 @@
 
     <main class="max-w-5xl mx-auto px-6 mt-12 relative pt-24">
         <div class="text-center mb-16 fade-in-up">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
-                Selected <span class="accent-text">Publications</span> & Projects
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+                Selected <span class="accent-text">publications</span> &amp; projects
             </h1>
-            <div class="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded mx-auto mb-6"></div>
+            <div class="section-rule mx-auto mb-6"></div>
             <p class="text-slate-400 max-w-2xl mx-auto text-lg">
                 A selection of my research which I am especially interested in.
             </p>
@@ -30,8 +30,8 @@
 
         <section class="mb-16">
             <div class="flex items-center gap-4 mb-8">
-                <h2 class="text-2xl font-mono text-blue-400 font-bold">2026 (in press)</h2>
-                <div class="flex-1 h-px bg-gradient-to-r from-blue-500/50 to-transparent"></div>
+                <h2 class="text-xl font-bold text-blue-400">2026 (in press)</h2>
+                <div class="flex-1 h-px bg-white/10"></div>
             </div>
             <div class="space-y-6">
                 <div class="glass publication-card p-8 rounded-2xl border-l-4 border-blue-500 hover:border-blue-400 transition-all">
@@ -46,7 +46,7 @@
                         <div class="flex-1">
                             <div class="flex items-center gap-2 mb-2">
                                 <i class="fas fa-file-alt text-yellow-400"></i>
-                                <span class="text-xs text-yellow-400 uppercase tracking-widest font-bold">In press · Poster</span>
+                                <span class="text-sm text-amber-400/90">In press · Poster</span>
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold mb-2 leading-tight">Investigating Personalised Avatars with Face Tracking in Social VR</h3>
                             <p class="text-slate-400 text-sm mb-4">S. E. R. Thompson, D. Lange-Nawka, B. C. Wünsche</p>
@@ -74,7 +74,7 @@
                         <div class="flex-1">
                             <div class="flex items-center gap-2 mb-2">
                                 <i class="fas fa-file-alt text-yellow-400"></i>
-                                <span class="text-xs text-yellow-400 uppercase tracking-widest font-bold">In press · Workshop</span>
+                                <span class="text-sm text-amber-400/90">In press · Workshop</span>
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold mb-2 leading-tight">Towards Embodied Identities: Investigating Personalised Avatars with Face Tracking in Social VR</h3>
                             <p class="text-slate-400 text-sm mb-4">S. E. R. Thompson, D. Lange-Nawka, B. C. Wünsche</p>
@@ -94,8 +94,8 @@
 
         <section class="mb-16">
             <div class="flex items-center gap-4 mb-8">
-                <h2 class="text-2xl font-mono text-slate-500 font-bold">2025</h2>
-                <div class="flex-1 h-px bg-gradient-to-r from-slate-500/50 to-transparent"></div>
+                <h2 class="text-xl font-bold text-blue-400/80">2025</h2>
+                <div class="flex-1 h-px bg-white/10"></div>
             </div>
             <div class="space-y-6">
                 <div class="glass publication-card p-8 rounded-2xl border-l-4 border-slate-700 hover:border-blue-500/50 transition-all">
@@ -133,8 +133,8 @@
 
         <section class="mb-16">
             <div class="flex items-center gap-4 mb-8">
-                <h2 class="text-2xl font-mono text-slate-500 font-bold">2023</h2>
-                <div class="flex-1 h-px bg-gradient-to-r from-slate-500/50 to-transparent"></div>
+                <h2 class="text-xl font-bold text-blue-400/80">2023</h2>
+                <div class="flex-1 h-px bg-white/10"></div>
             </div>
             <div class="space-y-6">
                 <div class="glass publication-card p-8 rounded-2xl border-l-4 border-slate-700 hover:border-blue-500/50 transition-all">
@@ -296,7 +296,7 @@
                 const imgCol = document.createElement('div');
                 imgCol.className = 'md:w-32 flex-shrink-0';
                 const img = document.createElement('div');
-                img.className = 'w-full rounded-xl shadow-lg border border-white/10 bg-gradient-to-br from-blue-500/20 to-purple-500/10 flex items-center justify-center text-slate-300 text-xs text-center px-3 py-6';
+                img.className = 'w-full rounded-lg border border-white/10 bg-white/5 flex items-center justify-center text-slate-400 text-xs text-center px-3 py-6';
                 img.textContent = pub.venue || 'Publication';
                 imgCol.appendChild(img);
 
