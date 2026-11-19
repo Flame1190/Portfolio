@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "0 3 * * *" # 03:00 UTC daily
 
+permissions:
+  contents: write
+
 jobs:
   update-scholar:
     runs-on: ubuntu-latest

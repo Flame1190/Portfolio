@@ -12,16 +12,16 @@
 </head>
 <body class="hero-gradient min-h-screen pb-20">
 
-    <div id="navbar-container"></div>
+    <a class='skip-link' href='#main-content'>Skip to content</a><div id='navbar-container'></div>
 
-    <main class="max-w-5xl mx-auto px-6 mt-12 relative pt-24">
+    <main id="main-content" tabindex="-1" class="max-w-5xl mx-auto px-6 mt-12 relative pt-24">
         <div class="text-center mb-16 fade-in-up">
             <h1 class="text-3xl md:text-4xl font-bold mb-4">
-                All <span class="accent-text">publications</span> (Google Scholar)
+                Publications
             </h1>
             <div class="section-rule mx-auto mb-6"></div>
             <p class="text-slate-400 max-w-2xl mx-auto text-lg">
-                Automatically synced list of all publications from my Google Scholar profile, with search, year filters, and citation counts.
+                Papers and citation counts from my Google Scholar profile.
             </p>
             <p class="text-slate-500 max-w-2xl mx-auto text-xs mt-3"> 
                 For a smaller hand‑picked set of projects see the <a href="research.html" class="text-blue-400 hover:text-blue-300 font-semibold">Selected Publications</a> page.
@@ -50,8 +50,8 @@
                 Filter publications
             </div>
             <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                <input id="pub-search" type="text" placeholder="Search by title, venue, or author" class="w-full sm:w-72 px-3 py-2 rounded-xl bg-black/30 border border-white/10 text-xs text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-blue-400" />
-                <select id="year-filter" class="w-full sm:w-40 px-3 py-2 rounded-xl bg-black/30 border border-white/10 text-xs text-slate-200 focus:outline-none focus:border-blue-400">
+                <input aria-label="Search publications" id="pub-search" type="text" placeholder="Search by title, venue, or author" class="w-full sm:w-72 px-3 py-2 rounded-xl bg-black/30 border border-white/10 text-xs text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-blue-400" />
+                <select aria-label="Publication year" id="year-filter" class="w-full sm:w-40 px-3 py-2 rounded-xl bg-black/30 border border-white/10 text-xs text-slate-200 focus:outline-none focus:border-blue-400">
                     <option value="">All years</option>
                 </select>
             </div>
@@ -184,7 +184,7 @@
                 icon.className = 'fas fa-file-alt text-slate-500';
                 const status = document.createElement('span');
                 status.className = 'text-xs text-slate-500 uppercase tracking-widest font-bold';
-                status.textContent = (typeof pub.citedBy === 'number' && pub.citedBy > 0) ? 'Published' : 'Preprint / Working';
+                status.textContent = (typeof pub.citedBy === 'number' && pub.citedBy > 0) ? 'Publication' : 'Publication';
                 metaRow.appendChild(icon);
                 metaRow.appendChild(status);
 
@@ -275,7 +275,7 @@
                 try {
                     const d = new Date(ts);
                     if (!isNaN(d.getTime())) {
-                        lastUpdatedEl.textContent = 'Feed last updated ' + d.toLocaleString();
+                        lastUpdatedEl.textContent = 'Feed retrieved ' + d.toLocaleString();
                     }
                 } catch (e) {
                     // ignore
@@ -398,4 +398,3 @@
     </script>
 </body>
 </html>
-

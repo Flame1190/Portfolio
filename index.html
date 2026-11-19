@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sam Thompson | XR Engineer & Researcher</title>
+    <title>Sam Thompson | XR & AI Research Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
@@ -12,226 +12,62 @@
 </head>
 <body class="hero-gradient">
 
-    <div id="navbar-container"></div>
+    <a class='skip-link' href='#about'>Skip to content</a><div id='navbar-container'></div>
 
-<section id="about" class="min-h-[40vh] flex flex-col items-center text-center px-6 relative pt-20">
-                <div class="mt-4 mb-6 w-full flex justify-center">
-                <img src="images/avatar.jpg" 
-                     alt="Sam Thompson" 
-                     class="w-50 h-50 md:w-60 md:h-60 rounded-full avatar-ring object-cover">
-            </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 leading-tight">
-                <span class="accent-text">XR</span> Engineer &amp; Researcher
-            </h1>
-            <p class="max-w-2xl text-base md:text-lg text-slate-400 leading-relaxed mb-8 mx-auto">
-                PhD researcher at the <b class="text-blue-400">University of Cambridge</b> specialising in XR, social VR, embodied AI, and human-computer interaction.
-                Building production-ready immersive systems backed by research and user evaluation.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-3 justify-center items-center mb-4">
-                <a href="assets/resume.pdf" class="btn-primary">
-                    <i class="fas fa-file-alt mr-2"></i>Download Resume
-                </a>
-            
-                <a href="projects.html" class="btn-secondary">
-                    <i class="fas fa-folder-open mr-2"></i>View Projects
-                </a>
-            
-                <a href="https://scholar.google.com/citations?user=I4Zl2NIAAAAJ" target="_blank" class="btn-secondary">
-                    <i class="ai ai-google-scholar mr-2"></i>Google Scholar
-                </a>
-            </div>
-            <div class="flex flex-wrap justify-center gap-6 mt-3 text-sm">
-                <div>
-                    <span class="text-white font-semibold">10+</span>
-                    <span class="text-slate-400">Publications</span>
-                </div>
-                <div>
-                    <span class="text-white font-semibold">Cambridge</span>
-                    <span class="text-slate-400">PhD Researcher</span>
-                </div>
-                <div>
-                    <span class="text-white font-semibold">XR + AI</span>
-                    <span class="text-slate-400">Systems Builder</span>
-                </div>
-            </div>
-            <div class="mt-3 flex flex-col sm:flex-row gap-3 justify-center items-center text-sm text-slate-500">
-                <div class="glass px-5 py-3 rounded-xl text-sm text-slate-300">
-                    Open to XR Research Engineer, AI/XR Engineer, and Technical R&amp;D opportunities.
-                </div>
-                
-            </div>
+<section id="about" tabindex="-1">
+    <div>
+        <div class="research-identity">
+            <img src="images/avatar.jpg" alt="Sam Thompson" width="112" height="112">
+            <div><h1>Sam Thompson</h1><p class="byline">PhD researcher · University of Cambridge</p></div>
         </div>
-        
-        <a href="#dev" class="flex-shrink-0 mt-4 pb-8 pt-2 flex flex-col items-center text-blue-400/70 hover:text-blue-300 transition" aria-label="Scroll to projects">
-            <i class="fas fa-chevron-down text-xl"></i>
-        </a>
+        <h2 class="research-focus">XR and conversational AI</h2>
+        <p class="intro-copy">I study how people move, talk and recognise one another in virtual worlds. My projects range from a virtual museum you can walk through in a small room to face-tracked avatars for social VR.</p>
+        <div class="intro-links">
+            <a href="projects.html">Engineering projects</a>
+            <a href="assets/resume.pdf">Résumé (PDF)</a>
+            <a href="https://scholar.google.com/citations?user=I4Zl2NIAAAAJ">Google Scholar</a>
+        </div>
+        <p class="intro-availability">Open to XR Research Engineer, AI/XR Engineer, and Technical R&amp;D opportunities.</p>
+    </div>
+    <figure class="research-visual" id="featured-project">
+        <img src="images/fulls/eca.jpg" alt="Conversational avatar in the social VR prototype" fetchpriority="high">
+        <figcaption>
+            <div class="feature-controls" hidden>
+                <span class="feature-position"></span>
+                <button type="button" data-rotation>Pause</button>
+                <button type="button" data-previous aria-label="Previous featured project">←</button>
+                <button type="button" data-next aria-label="Next featured project">→</button>
+            </div>
+            <a class="feature-title" href="projects.html#embodied-agents">Embodied Conversational Agents ↗</a>
+            <p class="feature-summary">A VR prototype that lets you talk with an AI avatar on a mobile headset. I worked on the dataset and literature review.</p>
+            <span class="sr-only" role="status"></span>
+        </figcaption>
+    </figure>
+</section>
+
+
+
+    <section id="dev" class="work-index" aria-labelledby="work-title">
+        <header><h2 id="work-title">Selected engineering work</h2><a href="projects.html">All projects →</a></header>
+        <article>
+            <img src="images/fulls/eca.jpg" alt="Conversational avatar in the social VR prototype" loading="lazy">
+            <div><h3>Embodied Conversational Agents</h3><p>A VR prototype that lets you talk with an AI avatar on a mobile headset. I worked on the dataset and literature review.</p>
+                <a href="projects.html#embodied-agents">Project details →</a></div>
+        </article>
+        <article>
+            <img src="images/fulls/ssuper.jpg" alt="Stereo reconstruction from the XR rendering project" loading="lazy">
+            <div><h3>XR super resolution</h3><p>I built the training dataset for a stereo upscaling pipeline, capturing colour, depth and motion vectors from Unity scenes.</p>
+                <a href="https://github.com/Flame1190/CompSci-760-Data-Collection">Data collection code ↗</a></div>
+        </article>
+        <article>
+            <img src="images/fulls/imp.jpg" alt="The virtual museum used in the redirected walking study" loading="lazy">
+            <div><h3>Impossible Spaces</h3><p>A non-Euclidean museum fits a long walk into a small tracked space. I used it to study how redirected walking affects episodic memory.</p>
+                <a href="https://github.com/Flame1190/CompSci-715-Unity">Museum source code ↗</a></div>
+        </article>
     </section>
 
 
-    
-    <section id="dev" class="py-2 max-w-6xl mx-auto px-6 relative">
-        <div class="mb-16 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">
-                Featured <span class="accent-text">Projects</span>
-            </h2>
-            <div class="section-rule mx-auto"></div>
-            <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
-                Selected projects in XR, games, and interactive systems.
-            </p>
-        </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="glass project-card p-6 group">
-                <div class="overflow-hidden rounded-lg mb-4">
-                    <img src="images/fulls/eca.jpg" 
-                         alt="Embodied conversational agents in social VR" 
-                         class="project-img w-full">
-                </div>
-                <div class="flex gap-2 mb-3">
-                    <span class="tech-tag">OpenAI API</span>
-                    <span class="tech-tag">Android</span>
-                    <span class="tech-tag">XR</span>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Embodied Conversational Agents</h3>
-                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                    A social VR prototype combining large language models with embodied avatars, deployed on mobile hardware to explore real-time, in-headset interaction.
-                </p>
-                <a href="projects.html" class="link-accent font-semibold text-sm inline-flex items-center gap-2">
-                    View case study <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="glass project-card p-6 group">
-                <div class="overflow-hidden rounded-lg mb-4">
-                    <img src="images/fulls/ssuper.jpg" 
-                         alt="XR super resolution pipeline" 
-                         class="project-img w-full">
-                </div>
-                <div class="flex gap-2 mb-3">
-                    <span class="tech-tag">Reconstruction</span>
-                    <span class="tech-tag">Unity</span>
-                    <span class="tech-tag">Pytorch</span>
-                </div>
-                <h3 class="text-xl font-bold mb-2">XR Super Resolution</h3>
-                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                    A stereoscopic super-resolution pipeline for head‑mounted displays, fusing RGB, depth, and motion vectors to upscale XR scenes while keeping performance viable. I especially focused on generating the training dataset, working with scene RGB, depth, and motion vector information.
-                </p>
-                <a href="https://github.com/Flame1190/CompSci-760-Data-Collection" target="_blank" class="link-accent font-semibold text-sm inline-flex items-center gap-2">
-                    GitHub Source <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="glass project-card p-6 group">
-                <div class="overflow-hidden rounded-lg mb-4">
-                    <img src="images/fulls/imp.jpg" 
-                         alt="Impossible Spaces VR locomotion system" 
-                         class="project-img w-full">
-                </div>
-                <div class="flex gap-2 mb-3">
-                    <span class="tech-tag">Research</span>
-                    <span class="tech-tag">HCI</span>
-                    <span class="tech-tag">Unity</span>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Impossible Spaces VR</h3>
-                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                    The engine behind my redirected walking research: a non‑Euclidean museum environment that lets users walk infinitely in a finite tracked space.
-                </p>
-                <a href="https://github.com/Flame1190/CompSci-715-Unity" target="_blank" class="link-accent font-semibold text-sm inline-flex items-center gap-2">
-                    GitHub Source <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-        
-        <div class="text-center mt-12">
-            <a href="projects.html" class="btn-secondary">
-                View All Projects <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-        </div>
-    </section>
-
-
-    <section id="community" class="py-20 max-w-6xl mx-auto px-6 relative">
-        <div class="mb-16 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">
-                Community <span class="accent-text">Leadership</span>
-            </h2>
-            <div class="section-rule mx-auto"></div>
-            <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
-                My involvement in the communiy beyond the technical side.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="glass project-card p-6 group">
-                <div class="overflow-hidden rounded-lg mb-4">
-                    <img src="images/fulls/eca.jpg" 
-                         alt="Embodied conversational agents in social VR" 
-                         class="project-img w-full">
-                </div>
-                <div class="flex gap-2 mb-3">
-                    <span class="tech-tag">International</span>
-                    <span class="tech-tag">Collaborative</span>
-                    <span class="tech-tag">Outreach</span>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Intercollegiate XR (ICXR)</h3>
-                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-I have been heavily involved in the ICXR community, joining the executive team in 2023 and serving as the President in 2025.
-                </p>
-                <a href="https://www.icxr.org/" class="link-accent font-semibold text-sm inline-flex items-center gap-2">
-                    Learn more about ICXR <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="glass project-card p-6 group">
-                <div class="overflow-hidden rounded-lg mb-4">
-                    <img src="images/fulls/ssuper.jpg" 
-                         alt="XR super resolution pipeline" 
-                         class="project-img w-full">
-                </div>
-                <div class="flex gap-2 mb-3">
-                    <span class="tech-tag">Reconstruction</span>
-                    <span class="tech-tag">Unity</span>
-                    <span class="tech-tag">Pytorch</span>
-                </div>
-                <h3 class="text-xl font-bold mb-2">RealityX Hackathon</h3>
-                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                    I was one of the Co-Founders and hosts of the RealityX Hackathon, the first XR and AI hackathon based in Cambridge, UK.
-                </p>
-                <a href="https://realityx.org/" target="_blank" class="link-accent font-semibold text-sm inline-flex items-center gap-2">
-                    Learn more about the RealityX Hackathon <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <div class="glass project-card p-6 group">
-                <div class="overflow-hidden rounded-lg mb-4">
-                    <img src="images/fulls/imp.jpg" 
-                         alt="Impossible Spaces VR locomotion system" 
-                         class="project-img w-full">
-                </div>
-                <div class="flex gap-2 mb-3">
-                    <span class="tech-tag">Leadership</span>
-                    <span class="tech-tag">Student Clubs</span>
-                    <span class="tech-tag">University</span>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Leading Student XR Clubs</h3>
-                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                    I have been heavily involved in the student XR club scene, leading the Cambridge University AR/VR Society and the University of Auckland's VR Club.
-                </p>
-                <a href="https://www.cambridgearvrsociety.com/" target="_blank" class="link-accent font-semibold text-sm inline-flex items-center gap-2">
-                    Learn more about the Cambridge University AR/VR Society <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="https://www.facebook.com/groups/552533420142167" target="_blank" class="link-accent font-semibold text-sm inline-flex items-center gap-2">
-                    Learn more about the University of Auckland's VR Club <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-        
-        <div class="text-center mt-12">
-            <a href="projects.html" class="btn-secondary">
-                View All Projects <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-        </div>
-    </section>
 
     <section id="research" class="py-24 relative">
         <div class="absolute inset-0 grid-pattern opacity-40 pointer-events-none"></div>
@@ -245,19 +81,19 @@ I have been heavily involved in the ICXR community, joining the executive team i
                     Recent work in HCI, social VR, and embodied interaction.
                 </p>
             </div>
-            
+
             <div class="space-y-6">
                 <div class="glass publication-card p-6 rounded-2xl border-l-4 border-blue-500 hover:border-blue-400 transition-all">
                     <div class="flex flex-col md:flex-row gap-6">
                         <div class="md:w-24 flex-shrink-0">
 							<div class="text-blue-400 font-mono font-bold text-lg mb-2">2026</div>
-							
+
 							<div class="w-full aspect-[4/3] overflow-hidden rounded-lg">
 								<img src="images/fulls/embodied.webp"
 									 alt="Poster on personalised avatars in social VR"
 									 class="w-full h-full object-cover object-center opacity-80">
 							</div>
-						
+
 						</div>
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-white mb-1 leading-tight">Investigating Personalised Avatars with Face Tracking in Social VR</h3>
@@ -276,13 +112,13 @@ I have been heavily involved in the ICXR community, joining the executive team i
                     <div class="flex flex-col md:flex-row gap-6">
                         <div class="md:w-24 flex-shrink-0">
 							<div class="text-blue-400 font-mono font-bold text-lg mb-2">2024</div>
-							
+
 							<div class="w-full aspect-[4/3] overflow-hidden rounded-lg">
 								<img src="images/fulls/imp.jpg"
 									 alt="Poster on impossible spaces in VR"
 									 class="w-full h-full object-cover object-center opacity-80">
 							</div>
-						
+
 						</div>
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-white mb-2 leading-tight">Now You&apos;re Thinking with Portals: Investigating Episodic Memory and Locomotion with Redirected Walking in Impossible Spaces</h3>
@@ -303,13 +139,13 @@ I have been heavily involved in the ICXR community, joining the executive team i
                     <div class="flex flex-col md:flex-row gap-6">
                         <div class="md:w-24 flex-shrink-0">
 							<div class="text-blue-400 font-mono font-bold text-lg mb-2">2024</div>
-							
+
 							<div class="w-full aspect-[4/3] overflow-hidden rounded-lg">
 								<img src="images/fulls/racer.JPG"
 									 alt="Exergaming user study"
 									 class="w-full h-full object-cover object-center opacity-80">
 							</div>
-						
+
 						</div>
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-white mb-2 leading-tight">That&apos;s the Way I (Dis-) Like It! Effect of Gamer Types and Competitiveness in VR Exergaming</h3>
@@ -330,13 +166,13 @@ I have been heavily involved in the ICXR community, joining the executive team i
                     <div class="flex flex-col md:flex-row gap-6">
                         <div class="md:w-24 flex-shrink-0">
 							<div class="text-blue-400 font-mono font-bold text-lg mb-2">2023</div>
-							
+
 							<div class="w-full aspect-[4/3] overflow-hidden rounded-lg">
 								<img src="images/fulls/stroke.jpg"
 									 alt="VR application for gamified stroke rehabilitation"
 									 class="w-full h-full object-cover object-center opacity-80">
 							</div>
-						
+
 						</div>
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-white mb-2 leading-tight">Relationship between Motivational Strategies and Gamification User Types in VR Movement Games</h3>
@@ -353,7 +189,7 @@ I have been heavily involved in the ICXR community, joining the executive team i
                     </div>
                 </div>
             </div>
-            
+
             <div class="mt-12 text-center flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="research.html" class="btn-secondary">
                     View All Research <i class="fas fa-arrow-right ml-2"></i>
@@ -365,20 +201,72 @@ I have been heavily involved in the ICXR community, joining the executive team i
         </div>
     </section>
 
+    <section id="community" class="py-20 max-w-6xl mx-auto px-6 relative">
+        <div class="mb-16 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                Community <span class="accent-text">Leadership</span>
+            </h2>
+            <div class="section-rule mx-auto"></div>
+            <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
+                XR communities in Cambridge, Auckland and beyond.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="glass project-card p-6 group">
+
+                <h3 class="text-xl font-bold mb-2">Intercollegiate XR (ICXR)</h3>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+I have been heavily involved in the ICXR community, joining the executive team in 2023 and serving as the President in 2025.
+                </p>
+                <a href="https://www.icxr.org/" class="link-accent font-semibold text-sm inline-flex items-center gap-2">
+                    Learn more about ICXR <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="glass project-card p-6 group">
+
+                <h3 class="text-xl font-bold mb-2">RealityX Hackathon</h3>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                    I was one of the Co-Founders and hosts of the RealityX Hackathon, the first XR and AI hackathon based in Cambridge, UK.
+                </p>
+                <a href="https://realityx.org/" target="_blank" class="link-accent font-semibold text-sm inline-flex items-center gap-2">
+                    Learn more about the RealityX Hackathon <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="glass project-card p-6 group">
+
+                <h3 class="text-xl font-bold mb-2">Leading Student XR Clubs</h3>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                    I have been heavily involved in the student XR club scene, leading the Cambridge University AR/VR Society and the University of Auckland's VR Club.
+                </p>
+                <a href="https://www.cambridgearvrsociety.com/" target="_blank" class="link-accent font-semibold text-sm inline-flex items-center gap-2">
+                    Learn more about the Cambridge University AR/VR Society <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://www.facebook.com/groups/552533420142167" target="_blank" class="link-accent font-semibold text-sm inline-flex items-center gap-2">
+                    Learn more about the University of Auckland's VR Club <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+
+    </section>
+
     <footer id="contact" class="py-24 text-center relative border-t border-white/5">
         <div class="max-w-4xl mx-auto px-6 relative z-10">
             <div class="mb-8">
-                <img src="images/fulls/cambridge.jpg" 
-                     alt="Collaboration" 
+                <img src="images/fulls/cambridge.jpg"
+                     alt="Collaboration"
                      class="w-full max-w-2xl mx-auto rounded-lg border border-white/10 mb-8">
             </div>
             <h2 class="text-2xl md:text-3xl font-bold mb-4 leading-tight">
-                Let&apos;s work <span class="accent-text">together</span>
+                Get in touch
             </h2>
             <p class="text-slate-400 mb-8 max-w-lg mx-auto">
                 Based in <span class="text-blue-400 font-medium">Cambridge, UK</span>. Open to technical R&amp;D opportunities and collaborations.
             </p>
-            
+
             <div class="flex justify-center gap-4 mb-12 flex-wrap">
                 <a href="https://github.com/Flame1190" target="_blank" class="icon-btn text-xl" aria-label="GitHub">
                     <i class="fab fa-github"></i>
@@ -393,11 +281,12 @@ I have been heavily involved in the ICXR community, joining the executive team i
                     <i class="ai ai-google-scholar"></i>
                 </a>
             </div>
-            
-            <p class="text-slate-600 text-sm">&copy; 2025 Samuel E. R. Thompson</p>
+
+            <p class="text-slate-600 text-sm">&copy; 2026 Samuel E. R. Thompson</p>
         </div>
     </footer>
 
     <script src="navbar.js"></script>
+    <script src="featured-projects.js"></script>
 </body>
 </html>
