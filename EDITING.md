@@ -18,3 +18,5 @@ scholar-publications.html loads publications.json. The scheduled update-scholar 
 The Scholar workflow runs daily and calls the reusable Pages workflow after a successful fetch and commit. Updates to the fetch script or its workflow on main also trigger a sync. The repository secret SERPAPI_API_KEY must hold a working SerpAPI key. Fetch failures leave the previous feed intact and fail the workflow. The browser revalidates publications.json on each page load.
 
 External font, icon and Tailwind CDN access is required by the current implementation.
+
+The Pages workflow runs scripts/prepare_site.py and deploys its _site output. This adds content hashes to local asset URLs so browsers load matching HTML, styles, scripts and images after each deployment. The generated _site folder is ignored by Git.
