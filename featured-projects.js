@@ -28,7 +28,7 @@
     function show(step, announce = false) {
         index = (index + step + projects.length) % projects.length;
         const project = projects[index];
-        image.src = project.image.src;
+        image.src = project.image.dataset.featureImage || project.image.src;
         image.alt = project.image.alt;
         title.href = project.link.href;
         title.textContent = project.title + ' ↗';

@@ -365,7 +365,7 @@
 
             // Only attempt network fetch when served over HTTP(S), not file://
             if (location.protocol === 'http:' || location.protocol === 'https:') {
-                fetch(JSON_URL, { credentials: 'omit' })
+                fetch(JSON_URL, { credentials: 'omit', cache: 'no-cache' })
                     .then(function (response) {
                         if (!response.ok) {
                             throw new Error('Publications JSON responded with ' + response.status);

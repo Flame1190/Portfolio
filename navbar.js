@@ -22,7 +22,7 @@
 
   const navHtml = `
   
-<nav id="navbar" class="fixed w-full z-50 py-5 glass border-b border-white/5">
+<nav id="navbar" class="fixed top-0 inset-x-0 w-full z-50 py-5 glass border-b border-white/5">
   <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
     <a href="${logoHref}" class="text-lg font-semibold tracking-tight text-slate-200"><span class="accent-text">Sam</span> Thompson</a>
     <div class="hidden md:flex space-x-8 items-center">

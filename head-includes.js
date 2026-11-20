@@ -3,7 +3,7 @@
  * Include in <head> on every page: <script src="head-includes.js"></script>
  */
 (function () {
-  const FAVICON_VERSION = '20260608';
+  const FAVICON_VERSION = '20261120';
   const base = '/images/favicon/';
 
   const links = [
@@ -24,4 +24,9 @@
   meta.name = 'apple-mobile-web-app-title';
   meta.content = 'Sam Thompson';
   document.head.appendChild(meta);
+
+  const theme = document.createElement('meta');
+  theme.name = 'theme-color';
+  theme.content = '#0d1319';
+  document.head.appendChild(theme);
 })();

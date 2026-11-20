@@ -1,6 +1,7 @@
 import os
 import json
 import time
+import tempfile
 from typing import List, Dict
 
 import requests
@@ -30,9 +31,13 @@ def fetch_all_publications(api_key: str, author_id: str) -> List[Dict]:
         resp = requests.get(SERPAPI_ENDPOINT, params=params, timeout=30)
         resp.raise_for_status()
         data = resp.json()
+        if data.get("error"):
+            raise RuntimeError("SerpAPI reported an error; keeping the previous feed.")
 
         articles = data.get("articles", [])
         if not articles:
+            if start:
+                raise RuntimeError("A paginated response was empty; keeping the previous feed.")
             break
 
         for art in articles:
@@ -96,8 +101,19 @@ def main() -> None:
     pubs.sort(key=lambda p: ((p.get("year") or ""), p.get("title") or ""), reverse=True)
 
     out_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "publications.json")
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(pubs, f, indent=2, ensure_ascii=False)
+    # Replace the feed only after every page has been fetched and serialized.
+    with tempfile.NamedTemporaryFile(
+        mode="w", encoding="utf-8", dir=os.path.dirname(out_path), delete=False
+    ) as f:
+        temporary_path = f.name
+        try:
+            json.dump(pubs, f, indent=2, ensure_ascii=False)
+            f.write("\n")
+        except Exception:
+            f.close()
+            os.unlink(temporary_path)
+            raise
+    os.replace(temporary_path, out_path)
 
     print(f"Wrote {len(pubs)} publications to {out_path}")
 
